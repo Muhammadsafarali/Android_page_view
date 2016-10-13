@@ -1,18 +1,22 @@
 package ru.norbit.pageview;
 
-import android.support.v4.app.Fragment;
+//import android.support.v4.app.Fragment;
+import android.app.Fragment;
+//import android.support.v4.app.FragmentActivity;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.view.PagerAdapter;
+//import android.support.v4.view.ViewPager;
+import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.util.Log;
 
 public class MainActivity extends FragmentActivity {
 
     static final String LOG_TAG = "MainActivity";
-    static final int PAGE_COUNT = 10;
+    static final int PAGE_COUNT = 3;
 
     ViewPager pager;
     PagerAdapter pagerAdapter;
@@ -23,7 +27,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         pager = (ViewPager)findViewById(R.id.pager);
-        pagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new MyFragmentPagerAdapter(getFragmentManager());
         pager.setAdapter(pagerAdapter);
 
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -42,7 +46,11 @@ public class MainActivity extends FragmentActivity {
         });
     }
 
-    private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+    private class MyFragmentPagerAdapter extends MyFragmentStatePagerAdapter {
+//        public MyFragmentPagerAdapter(FragmentManager fm) {
+//            super(fm);
+//        }
+
         public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -54,7 +62,13 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return PAGE_COUNT;
+            return 3;
         }
+
+//        @Override
+//        public int getCount() {
+//            return 0;
+//        }
+
     }
 }

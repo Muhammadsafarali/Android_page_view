@@ -43,9 +43,9 @@ public class PageFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, null);
 
-        TextView tvPage = (TextView) view.findViewById(R.id.tvPage);
-        tvPage.setText("Page " + pageNumber);
-        tvPage.setBackgroundColor(backColor);
+//        TextView tvPage = (TextView) view.findViewById(R.id.asthma_action_plan);
+//        tvPage.setText("Page " + pageNumber);
+//        tvPage.setBackgroundColor(backColor);
 
         return view;
     }

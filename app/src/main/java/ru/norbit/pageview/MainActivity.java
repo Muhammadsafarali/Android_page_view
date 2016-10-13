@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity {
         pager = (ViewPager)findViewById(R.id.pager);
         pagerAdapter = new MyFragmentPagerAdapter(getFragmentManager());
         pager.setAdapter(pagerAdapter);
-
+        pager.setCurrentItem(10);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -47,9 +47,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     private class MyFragmentPagerAdapter extends MyFragmentStatePagerAdapter {
-//        public MyFragmentPagerAdapter(FragmentManager fm) {
-//            super(fm);
-//        }
 
         public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -62,13 +59,9 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            Log.e(LOG_TAG, "Count page_view -> " + String.valueOf(Integer.MAX_VALUE/100));
+            return Integer.MAX_VALUE/100;
         }
-
-//        @Override
-//        public int getCount() {
-//            return 0;
-//        }
-
     }
+
 }

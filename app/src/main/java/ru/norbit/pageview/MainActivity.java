@@ -26,6 +26,11 @@ public class MainActivity extends FragmentActivity {
 
     static final String LOG_TAG = "MainActivity";
     static final int PAGE_COUNT = 3;
+    static int last_pos = -1;
+    static int day;
+    static int month;
+    static int year;
+
 
     ViewPager pager;
     PagerAdapter pagerAdapter;
@@ -43,15 +48,22 @@ public class MainActivity extends FragmentActivity {
 //        Log.e(LOG_TAG, "День Недели2 ->" + weekday);
 
         // Получить неделю с Пн по Вс
-        String[] days = getWeekOfMonth(14,Calendar.OCTOBER,2016);
-        for (int i = 0; i < days.length; i++) {
-            Log.e(LOG_TAG, days[i]);
-        }
+//        String[] days = getWeekOfMonth(14,Calendar.OCTOBER,2016);
+//        for (int i = 0; i < days.length; i++) {
+//            Log.e(LOG_TAG, days[i]);
+//        }
 
         pager = (ViewPager)findViewById(R.id.pager);
         pagerAdapter = new MyFragmentPagerAdapter(getFragmentManager());
         pager.setAdapter(pagerAdapter);
-        pager.setCurrentItem(100/2);
+        if (last_pos < 0) {
+            Calendar cal = Calendar.getInstance();
+            day = cal.get(Calendar.DAY_OF_MONTH);
+            month = cal.get(Calendar.MONTH);
+            year = cal.get(Calendar.YEAR);
+            last_pos = Constant.weeks_count / 2;
+        }
+        pager.setCurrentItem(last_pos);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -68,27 +80,27 @@ public class MainActivity extends FragmentActivity {
         });
     }
 
-    public static String[] getWeekOfMonth(int day, int month, int year) {
-        Calendar now = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
-        String[] days = new String[7];
-
-        now.set(year, month, day);
-        int dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
-        String weekday = new DateFormatSymbols().getShortWeekdays()[dayOfWeek];
-//        Log.e(LOG_TAG, "День Недели2 ->" + weekday);
-//        Log.e(LOG_TAG, "dayOfWeek -> " + String.valueOf(dayOfWeek));
-//        Log.e(LOG_TAG, "DAY_OF_WEEK -> " + now.get(GregorianCalendar.DAY_OF_WEEK));
-        int delta = -(now.get(GregorianCalendar.DAY_OF_WEEK)-2);
-        if (delta > 0)
-            delta = -6;
-        now.add(Calendar.DAY_OF_MONTH, delta);
-        for (int i = 0; i < 7; i++) {
-            days[i] = sdf.format(now.getTime());
-            now.add(Calendar.DAY_OF_MONTH, 1);
-        }
-        return days;
-    }
+//    public static String[] getWeekOfMonth(int day, int month, int year) {
+//        Calendar now = Calendar.getInstance();
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd");
+//        String[] days = new String[7];
+//
+//        now.set(year, month, day);
+//        int dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
+//        String weekday = new DateFormatSymbols().getShortWeekdays()[dayOfWeek];
+////        Log.e(LOG_TAG, "День Недели2 ->" + weekday);
+////        Log.e(LOG_TAG, "dayOfWeek -> " + String.valueOf(dayOfWeek));
+////        Log.e(LOG_TAG, "DAY_OF_WEEK -> " + now.get(GregorianCalendar.DAY_OF_WEEK));
+//        int delta = -(now.get(GregorianCalendar.DAY_OF_WEEK)-2);
+//        if (delta > 0)
+//            delta = -6;
+//        now.add(Calendar.DAY_OF_MONTH, delta);
+//        for (int i = 0; i < 7; i++) {
+//            days[i] = sdf.format(now.getTime());
+//            now.add(Calendar.DAY_OF_MONTH, 1);   // Сдвиг даты на 1. Все равно, что date++
+//        }
+//        return days;
+//    }
 
     private class MyFragmentPagerAdapter extends MyFragmentStatePagerAdapter {
 
@@ -98,13 +110,25 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return PageFragment.newInstance(position);
+            int next_page;
+            if (position - last_pos > 0)
+                next_page = 1;
+            else
+                if (position - last_pos < 0)
+                    next_page = -1;
+                else
+                    next_page = 0;
+            last_pos = position;
+            Calendar c = Calendar.getInstance();
+            c.set(year, month, day);
+            c.add(Calendar.WEEK_OF_MONTH, next_page);
+            return PageFragment.newInstance(position, c);
         }
 
         @Override
         public int getCount() {
 //            Log.e(LOG_TAG, "Count page_view -> " + String.valueOf(100));
-            return 100;
+            return Constant.weeks_count;
         }
     }
 

@@ -33,10 +33,17 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:background="@android:color/darker_gray" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/hail" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/hail" />-->
+                <TextView
+                    android:id="@+id/monday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="28dp"
+                    android:text="1"/>
                 <TextView
                     android:layout_width="0.2dp"
                     android:layout_height="match_parent"
@@ -53,10 +60,17 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/no_rain" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/no_rain" />-->
+                <TextView
+                    android:id="@+id/tuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="28dp"
+                    android:text="2"/>
                 <TextView
                     android:layout_width="0.2dp"
                     android:layout_height="match_parent"
@@ -73,11 +87,18 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:src="@drawable/donw_sun" />-->
+                <TextView
+                    android:id="@+id/wednesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:src="@drawable/donw_sun" />
+                    android:textSize="28dp"
+                    android:text="3"/>
                 <TextView
                     android:layout_width="0.2dp"
                     android:layout_height="match_parent"
@@ -104,7 +125,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="28dp"
-                    android:text="5"/>
+                    android:text="4"/>
                 <TextView
                     android:layout_width="0.2dp"
                     android:layout_height="fill_parent"
@@ -121,10 +142,17 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/raindrop" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/raindrop" />-->
+                <TextView
+                    android:id="@+id/friday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="28dp"
+                    android:text="5"/>
                 <TextView
                     android:layout_width="0.2dp"
                     android:layout_height="match_parent"
@@ -141,10 +169,17 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/light_rain" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/light_rain" />-->
+                <TextView
+                    android:id="@+id/saturday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="28dp"
+                    android:text="6"/>
                 <TextView
                     android:layout_width="0.2dp"
                     android:layout_height="match_parent"
@@ -161,10 +196,17 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/downpour" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/downpour" />-->
+                <TextView
+                    android:id="@+id/sunday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="28dp"
+                    android:text="7"/>
                 <TextView
                     android:layout_width="0.2dp"
                     android:layout_height="match_parent"

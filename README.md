@@ -1,6 +1,7 @@
 # Android_page_view
 
 ##Источники вдохновения: 
+
 1) [startandroid][id1];
 2) [AgendaCalendarView][id2].
 
